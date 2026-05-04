@@ -40,10 +40,7 @@
         <a href="#portfolio" class="btn-ghost">See My Work</a>
       </div>
     </div>
-    <div class="hero-scroll-hint">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
+
   </section>
 
   <!-- ABOUT -->
@@ -129,68 +126,97 @@
         <button class="filter-btn" data-filter="video">Videos</button>
       </div>
       <div class="portfolio-grid" id="portfolio-grid">
-        <!-- Photos -->
+
+        <!-- PHOTOS -->
         <div class="portfolio-item photo" data-type="photo">
-          <img src="https://res.cloudinary.com/dhev2vap2/image/upload/birthday_photoshoot_3.jpg" alt="Birthday Photoshoot" />
-          <div class="portfolio-overlay">
-            <span>Birthday Shoot</span>
-          </div>
+          <img loading="lazy" src="https://res.cloudinary.com/dhev2vap2/image/upload/f_auto,q_auto,g_face,c_fill,w_600,h_750/birthday_photoshoot_3.jpg" alt="Birthday Photoshoot" />
+          <div class="portfolio-overlay"><span>Birthday Shoot</span></div>
         </div>
         <div class="portfolio-item photo" data-type="photo">
-          <img src="https://res.cloudinary.com/dhev2vap2/image/upload/birthday_photoshoot_2.jpg" alt="Birthday Photoshoot 2" />
-          <div class="portfolio-overlay">
-            <span>Birthday Shoot</span>
-          </div>
+          <img loading="lazy" src="https://res.cloudinary.com/dhev2vap2/image/upload/f_auto,q_auto,g_face,c_fill,w_600,h_750/birthday_photoshoot_2.jpg" alt="Birthday Photoshoot" />
+          <div class="portfolio-overlay"><span>Birthday Shoot</span></div>
         </div>
         <div class="portfolio-item photo" data-type="photo">
-          <img src="https://res.cloudinary.com/dhev2vap2/image/upload/birthday_photoshoot_1.jpg" alt="Birthday Photoshoot 1" />
-          <div class="portfolio-overlay">
-            <span>Birthday Shoot</span>
-          </div>
+          <img loading="lazy" src="https://res.cloudinary.com/dhev2vap2/image/upload/f_auto,q_auto,g_face,c_fill,w_600,h_750/birthday_photoshoot_1.jpg" alt="Birthday Photoshoot" />
+          <div class="portfolio-overlay"><span>Birthday Shoot</span></div>
         </div>
         <div class="portfolio-item photo" data-type="photo">
-          <img src="https://res.cloudinary.com/dhev2vap2/image/upload/v1777912856/birthday_photoshoot_5.jpg" alt="Birthday Photoshoot 5" />
-          <div class="portfolio-overlay">
-            <span>Birthday Shoot</span>
-          </div>
+          <img loading="lazy" src="https://res.cloudinary.com/dhev2vap2/image/upload/f_auto,q_auto,g_face,c_fill,w_600,h_750/v1777912856/birthday_photoshoot_5.jpg" alt="Birthday Photoshoot" />
+          <div class="portfolio-overlay"><span>Birthday Shoot</span></div>
         </div>
         <div class="portfolio-item photo" data-type="photo">
-          <img src="https://res.cloudinary.com/dhev2vap2/image/upload/v1777912853/birthday_photoshoot_4.jpg" alt="Birthday Photoshoot 4" />
-          <div class="portfolio-overlay">
-            <span>Birthday Shoot</span>
-          </div>
+          <img loading="lazy" src="https://res.cloudinary.com/dhev2vap2/image/upload/f_auto,q_auto,g_face,c_fill,w_600,h_750/v1777912853/birthday_photoshoot_4.jpg" alt="Birthday Photoshoot" />
+          <div class="portfolio-overlay"><span>Birthday Shoot</span></div>
         </div>
-        <!-- Videos -->
-        <div class="portfolio-item video" data-type="video">
-          <video
-            src="https://res.cloudinary.com/dhev2vap2/video/upload/event_1.mp4"
-            poster="https://res.cloudinary.com/dhev2vap2/video/upload/so_0/event_1.jpg"
-            muted loop playsinline preload="none"></video>
-          <div class="portfolio-overlay">
+
+        <!-- VIDEOS — tap to play with sound, poster shows thumbnail -->
+        <div class="portfolio-item video" data-type="video" data-src="https://res.cloudinary.com/dhev2vap2/video/upload/q_auto/event_1.mp4">
+          <img class="video-thumb" loading="lazy" src="https://res.cloudinary.com/dhev2vap2/video/upload/f_jpg,q_auto,w_600,h_750,c_fill/event_1.jpg" alt="Event Coverage"
+            onerror="this.style.display='none'" />
+          <video loop playsinline preload="none"></video>
+          <div class="portfolio-overlay always-show">
             <div class="play-btn"><i class="fas fa-play"></i></div>
             <span>Event Coverage</span>
           </div>
         </div>
-        <div class="portfolio-item video" data-type="video">
-          <video
-            src="https://res.cloudinary.com/dhev2vap2/video/upload/v1777912819/event_5.mp4"
-            poster="https://res.cloudinary.com/dhev2vap2/video/upload/so_0/v1777912819/event_5.jpg"
-            muted loop playsinline preload="none"></video>
-          <div class="portfolio-overlay">
+        <div class="portfolio-item video" data-type="video" data-src="https://res.cloudinary.com/dhev2vap2/video/upload/q_auto/v1777935582/event_2.mp4">
+          <img class="video-thumb" loading="lazy" src="https://res.cloudinary.com/dhev2vap2/video/upload/f_jpg,q_auto,w_600,h_750,c_fill/v1777935582/event_2.jpg" alt="Event Film"
+            onerror="this.style.display='none'" />
+          <video loop playsinline preload="none"></video>
+          <div class="portfolio-overlay always-show">
+            <div class="play-btn"><i class="fas fa-play"></i></div>
+            <span>Event Film</span>
+          </div>
+        </div>
+        <div class="portfolio-item video" data-type="video" data-src="https://res.cloudinary.com/dhev2vap2/video/upload/q_auto/v1777935585/event_3.mp4">
+          <img class="video-thumb" loading="lazy" src="https://res.cloudinary.com/dhev2vap2/video/upload/f_jpg,q_auto,w_600,h_750,c_fill/v1777935585/event_3.jpg" alt="Event Highlights"
+            onerror="this.style.display='none'" />
+          <video loop playsinline preload="none"></video>
+          <div class="portfolio-overlay always-show">
+            <div class="play-btn"><i class="fas fa-play"></i></div>
+            <span>Event Highlights</span>
+          </div>
+        </div>
+        <div class="portfolio-item video" data-type="video" data-src="https://res.cloudinary.com/dhev2vap2/video/upload/q_auto/v1777912819/event_5.mp4">
+          <img class="video-thumb" loading="lazy" src="https://res.cloudinary.com/dhev2vap2/video/upload/f_jpg,q_auto,w_600,h_750,c_fill/v1777912819/event_5.jpg" alt="Event Story"
+            onerror="this.style.display='none'" />
+          <video loop playsinline preload="none"></video>
+          <div class="portfolio-overlay always-show">
             <div class="play-btn"><i class="fas fa-play"></i></div>
             <span>Event Story</span>
           </div>
         </div>
-        <div class="portfolio-item video" data-type="video">
-          <video
-            src="https://res.cloudinary.com/dhev2vap2/video/upload/v1777912818/event_4.mp4"
-            poster="https://res.cloudinary.com/dhev2vap2/video/upload/so_0/v1777912818/event_4.jpg"
-            muted loop playsinline preload="none"></video>
-          <div class="portfolio-overlay">
+        <div class="portfolio-item video" data-type="video" data-src="https://res.cloudinary.com/dhev2vap2/video/upload/q_auto/v1777912818/event_4.mp4">
+          <img class="video-thumb" loading="lazy" src="https://res.cloudinary.com/dhev2vap2/video/upload/f_jpg,q_auto,w_600,h_750,c_fill/v1777912818/event_4.jpg" alt="Event Reel"
+            onerror="this.style.display='none'" />
+          <video loop playsinline preload="none"></video>
+          <div class="portfolio-overlay always-show">
             <div class="play-btn"><i class="fas fa-play"></i></div>
             <span>Event Reel</span>
           </div>
         </div>
+        <div class="portfolio-item video" data-type="video" data-src="https://res.cloudinary.com/dhev2vap2/video/upload/q_auto/v1777936886/event_6.mp4">
+          <img class="video-thumb" loading="lazy" src="https://res.cloudinary.com/dhev2vap2/video/upload/f_jpg,q_auto,w_600,h_750,c_fill/v1777936886/event_6.jpg" alt="Event Reel 2"
+            onerror="this.style.display='none'" />
+          <video loop playsinline preload="none"></video>
+          <div class="portfolio-overlay always-show">
+            <div class="play-btn"><i class="fas fa-play"></i></div>
+            <span>Event Reel 2</span>
+          </div>
+        </div>
+        <div class="portfolio-item photo" data-type="photo">
+          <img loading="lazy" src="https://res.cloudinary.com/dhev2vap2/image/upload/f_auto,q_auto,g_face,c_fill,w_600,h_750/v1777936861/birthday_photoshoot_10.jpg" alt="Birthday Photoshoot" />
+          <div class="portfolio-overlay"><span>Baby Shower</span></div>
+        </div>
+        <div class="portfolio-item photo" data-type="photo">
+          <img loading="lazy" src="https://res.cloudinary.com/dhev2vap2/image/upload/f_auto,q_auto,g_face,c_fill,w_600,h_750/v1777936861/birthday_photoshoot_8.jpg" alt="Birthday Photoshoot" />
+          <div class="portfolio-overlay"><span>Baby Shower</span></div>
+        </div>
+        <div class="portfolio-item photo" data-type="photo">
+          <img loading="lazy" src="https://res.cloudinary.com/dhev2vap2/image/upload/f_auto,q_auto,g_face,c_fill,w_600,h_750/v1777936863/birthday_photoshoot_9.jpg" alt="Birthday Photoshoot" />
+          <div class="portfolio-overlay"><span>Baby Shower</span></div>
+        </div>
+
       </div>
     </div>
   </section>

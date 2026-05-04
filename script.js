@@ -21,9 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', () => navLinks.classList.remove('open'));
   });
 
-  // ── DETECT TOUCH DEVICE ────────────────
-  const isTouchDevice = () => window.matchMedia('(hover: none)').matches;
-
   // ── PORTFOLIO FILTER ───────────────────
   const filterBtns = document.querySelectorAll('.filter-btn');
   const portfolioItems = document.querySelectorAll('.portfolio-item');
@@ -38,48 +35,82 @@ document.addEventListener('DOMContentLoaded', () => {
           item.classList.remove('hidden');
         } else {
           item.classList.add('hidden');
-          const v = item.querySelector('video');
-          if (v) { v.pause(); v.currentTime = 0; item.classList.remove('playing'); }
+          stopVideo(item);
         }
       });
     });
   });
 
-  // ── VIDEO HANDLING ─────────────────────
-  portfolioItems.forEach(item => {
+  // ── VIDEO HELPERS ──────────────────────
+  function stopVideo(item) {
+    const video = item.querySelector('video');
+    if (!video) return;
+    video.pause();
+    video.removeAttribute('src');
+    video.load();
+    item.classList.remove('playing');
+  }
+
+  function stopAllVideos(except) {
+    document.querySelectorAll('.portfolio-item.video').forEach(item => {
+      if (item !== except) stopVideo(item);
+    });
+  }
+
+  function loadAndPlay(item) {
+    const video = item.querySelector('video');
+    const src = item.dataset.src;
+    if (!video || !src) return;
+
+    // Always set src fresh to force load
+    video.src = src;
+    video.load();
+
+    video.play().then(() => {
+      item.classList.add('playing');
+    }).catch(err => {
+      // On mobile first tap may be blocked — try once more on next interaction
+      console.warn('Playback blocked:', err.message);
+      item.classList.remove('playing');
+    });
+  }
+
+  // ── VIDEO INTERACTIONS ─────────────────
+  const isTouchDevice = () => window.matchMedia('(hover: none)').matches;
+
+  document.querySelectorAll('.portfolio-item.video').forEach(item => {
     const video = item.querySelector('video');
     if (!video) return;
 
     if (isTouchDevice()) {
-      // MOBILE: tap the play button or item to play/pause
       item.addEventListener('click', () => {
-        if (video.paused) {
-          document.querySelectorAll('.portfolio-item video').forEach(v => {
-            if (v !== video) {
-              v.pause(); v.currentTime = 0;
-              v.closest('.portfolio-item').classList.remove('playing');
-            }
-          });
-          video.play().catch(() => {});
+        if (item.classList.contains('playing')) {
+          stopVideo(item);
         } else {
-          video.pause(); video.currentTime = 0;
-          item.classList.remove('playing');
+          stopAllVideos(item);
+          loadAndPlay(item);
         }
       });
     } else {
-      // DESKTOP: hover to play
-      item.addEventListener('mouseenter', () => video.play().catch(() => {}));
-      item.addEventListener('mouseleave', () => {
-        video.pause(); video.currentTime = 0;
+      item.addEventListener('mouseenter', () => {
+        stopAllVideos(item);
+        loadAndPlay(item);
       });
+      item.addEventListener('mouseleave', () => stopVideo(item));
     }
 
     video.addEventListener('playing', () => item.classList.add('playing'));
     video.addEventListener('pause', () => item.classList.remove('playing'));
+    video.addEventListener('error', () => {
+      console.warn('Video error for:', item.dataset.src);
+      item.classList.remove('playing');
+    });
   });
 
   // ── SCROLL REVEAL ──────────────────────
-  const revealEls = document.querySelectorAll('.service-card, .portfolio-item, .stat, .contact-info-item');
+  const revealEls = document.querySelectorAll(
+    '.service-card, .portfolio-item, .stat, .contact-info-item, .about-grid'
+  );
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
@@ -91,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.08 });
 
   revealEls.forEach(el => {
     el.style.opacity = '0';
@@ -104,7 +135,10 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', (e) => {
       const target = document.querySelector(anchor.getAttribute('href'));
-      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
     });
   });
 
